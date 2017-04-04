@@ -1,0 +1,166 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "RingApi",
+    "version": "0.0.1"
+  },
+  "host": "api.ring.com",
+  "paths": {
+    "/clients_api/session/": {
+      "post": {
+        "summary": "Start Session",
+        "operationId": "GetSession",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "api_version",
+            "required": false,
+            "in": "formData",
+            "default": "9",
+            "type": "string",
+            "enum": [
+              "9"
+            ],
+            "x-title": "api_version"
+          },
+          {
+            "name": "device[os]",
+            "required": false,
+            "in": "formData",
+            "default": "ios",
+            "type": "string",
+            "enum": [
+              "ios"
+            ],
+            "x-title": "device[os]"
+          },
+          {
+            "name": "device[hardware_id]",
+            "required": false,
+            "in": "formData",
+            "default": "test",
+            "type": "string",
+            "enum": [
+              "test"
+            ],
+            "x-title": "device[hardware_id]"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "stub description for swagger compliance"
+          }
+        },
+        "security": [
+          {
+            "basic_auth": []
+          }
+        ]
+      }
+    },
+    "/clients_api/ring_devices": {
+      "get": {
+        "summary": "Devices",
+        "operationId": "GetDevices",
+        "parameters": [
+          {
+            "name": "auth_token",
+            "required": false,
+            "in": "query",
+            "default": "",
+            "type": "string",
+            "x-title": "auth_token"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "stub description for swagger compliance"
+          }
+        },
+        "security": []
+      }
+    },
+    "/clients_api/dings/active": {
+      "get": {
+        "summary": "Dings",
+        "operationId": "GetDings",
+        "parameters": [
+          {
+            "name": "auth_token",
+            "required": false,
+            "in": "query",
+            "type": "string",
+            "x-title": "auth_token"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "stub description for swagger compliance"
+          }
+        },
+        "security": []
+      }
+    },
+    "/clients_api/doorbots/history": {
+      "get": {
+        "summary": "History",
+        "operationId": "GetHistory",
+        "parameters": [
+          {
+            "name": "auth_token",
+            "required": false,
+            "in": "query",
+            "type": "string",
+            "x-title": "auth_token"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "stub description for swagger compliance"
+          }
+        },
+        "security": []
+      }
+    },
+    "/clients_api/dings/{ResponseBodyPath}/recording": {
+      "get": {
+        "summary": "Last Recording",
+        "operationId": "GetLastRecording",
+        "parameters": [
+          {
+            "name": "ResponseBodyPath",
+            "required": true,
+            "in": "path",
+            "type": "string",
+            "x-title": "ResponseBodyPath"
+          },
+          {
+            "name": "auth_token",
+            "required": false,
+            "in": "query",
+            "type": "string",
+            "x-title": "auth_token"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "stub description for swagger compliance"
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "basic_auth": {
+      "type": "basic",
+      "x-username": "<your username>",
+      "x-password": "<your password>"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard1.5</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>Ring.com</PackageId>
+    <Authors>Stephanvs</Authors>
+    <PackageProjectUrl>https://github.com/Stephanvs/Ring.com</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Stephanvs/Ring.com/master/LICENSE</PackageLicenseUrl>
+    <PackageTags>Ring.com;Ring;doorbot</PackageTags>
+    <PackageOutputPath>../../artifacts</PackageOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Rest.ClientRuntime">
+      <Version>3.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.2</Version>
+    </PackageReference>
+  </ItemGroup>
+</Project>
