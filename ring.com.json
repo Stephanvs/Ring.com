@@ -9,7 +9,7 @@
     "/clients_api/session/": {
       "post": {
         "summary": "Start Session",
-        "operationId": "GetSession",
+        "operationId": "Session_Start",
         "consumes": [
           "application/x-www-form-urlencoded"
         ],
@@ -49,8 +49,8 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": "stub description for swagger compliance"
+          "201": {
+            "description": "Session Created"
           }
         },
         "security": [
@@ -63,7 +63,7 @@
     "/clients_api/ring_devices": {
       "get": {
         "summary": "Devices",
-        "operationId": "GetDevices",
+        "operationId": "Devices_Get",
         "parameters": [
           {
             "name": "auth_token",
@@ -85,7 +85,7 @@
     "/clients_api/dings/active": {
       "get": {
         "summary": "Dings",
-        "operationId": "GetDings",
+        "operationId": "Dings_Get",
         "parameters": [
           {
             "name": "auth_token",
@@ -106,7 +106,7 @@
     "/clients_api/doorbots/history": {
       "get": {
         "summary": "History",
-        "operationId": "GetHistory",
+        "operationId": "History_Get",
         "parameters": [
           {
             "name": "auth_token",
@@ -127,7 +127,7 @@
     "/clients_api/dings/{ResponseBodyPath}/recording": {
       "get": {
         "summary": "Last Recording",
-        "operationId": "GetLastRecording",
+        "operationId": "Dings_GetLastRecording",
         "parameters": [
           {
             "name": "ResponseBodyPath",

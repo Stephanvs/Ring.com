@@ -2,14 +2,9 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
-namespace RingApi
+namespace Ring
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// </summary>
@@ -32,78 +27,24 @@ namespace RingApi
 
 
         /// <summary>
-        /// Start Session
+        /// Gets the ISession.
         /// </summary>
-        /// <param name='apiVersion'>
-        /// Possible values include: '9'
-        /// </param>
-        /// <param name='deviceos'>
-        /// Possible values include: 'ios'
-        /// </param>
-        /// <param name='devicehardwareId'>
-        /// Possible values include: 'test'
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> GetSessionWithHttpMessagesAsync(string apiVersion = default(string), string deviceos = default(string), string devicehardwareId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        ISession Session { get; }
 
         /// <summary>
-        /// Devices
+        /// Gets the IDevices.
         /// </summary>
-        /// <param name='authToken'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> GetDevicesWithHttpMessagesAsync(string authToken = "", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        IDevices Devices { get; }
 
         /// <summary>
-        /// Dings
+        /// Gets the IDings.
         /// </summary>
-        /// <param name='authToken'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> GetDingsWithHttpMessagesAsync(string authToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        IDings Dings { get; }
 
         /// <summary>
-        /// History
+        /// Gets the IHistory.
         /// </summary>
-        /// <param name='authToken'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> GetHistoryWithHttpMessagesAsync(string authToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// Last Recording
-        /// </summary>
-        /// <param name='responseBodyPath'>
-        /// </param>
-        /// <param name='authToken'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse> GetLastRecordingWithHttpMessagesAsync(string responseBodyPath, string authToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        IHistory History { get; }
 
     }
 }
