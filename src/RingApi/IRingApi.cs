@@ -4,6 +4,7 @@
 
 namespace Ring
 {
+    using Models;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -27,9 +28,9 @@ namespace Ring
 
 
         /// <summary>
-        /// Gets the ISession.
+        /// Gets the ISessionOperations.
         /// </summary>
-        ISession Session { get; }
+        ISessionOperations Session { get; }
 
         /// <summary>
         /// Gets the IDevices.

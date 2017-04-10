@@ -4,13 +4,14 @@
 
 namespace Ring
 {
+    using Models;
     using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for Session.
+    /// Extension methods for SessionOperations.
     /// </summary>
-    public static partial class SessionExtensions
+    public static partial class SessionOperationsExtensions
     {
             /// <summary>
             /// Start Session
@@ -27,9 +28,9 @@ namespace Ring
             /// <param name='devicehardwareId'>
             /// Possible values include: 'test'
             /// </param>
-            public static void Start(this ISession operations, string apiVersion = default(string), string deviceos = default(string), string devicehardwareId = default(string))
+            public static Session Start(this ISessionOperations operations, string apiVersion = default(string), string deviceos = default(string), string devicehardwareId = default(string))
             {
-                operations.StartAsync(apiVersion, deviceos, devicehardwareId).GetAwaiter().GetResult();
+                return operations.StartAsync(apiVersion, deviceos, devicehardwareId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -50,9 +51,12 @@ namespace Ring
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task StartAsync(this ISession operations, string apiVersion = default(string), string deviceos = default(string), string devicehardwareId = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Session> StartAsync(this ISessionOperations operations, string apiVersion = default(string), string deviceos = default(string), string devicehardwareId = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.StartWithHttpMessagesAsync(apiVersion, deviceos, devicehardwareId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.StartWithHttpMessagesAsync(apiVersion, deviceos, devicehardwareId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
     }

@@ -5,15 +5,16 @@
 namespace Ring
 {
     using Microsoft.Rest;
+    using Models;
     using System.Collections;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Session operations.
+    /// SessionOperations operations.
     /// </summary>
-    public partial interface ISession
+    public partial interface ISessionOperations
     {
         /// <summary>
         /// Start Session
@@ -36,6 +37,9 @@ namespace Ring
         /// <exception cref="Microsoft.Rest.HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        Task<HttpOperationResponse> StartWithHttpMessagesAsync(string apiVersion = default(string), string deviceos = default(string), string devicehardwareId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        Task<HttpOperationResponse<Session>> StartWithHttpMessagesAsync(string apiVersion = default(string), string deviceos = default(string), string devicehardwareId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

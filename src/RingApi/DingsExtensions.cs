@@ -4,6 +4,7 @@
 
 namespace Ring
 {
+    using Models;
     using System.Threading;
     using System.Threading.Tasks;
 

@@ -6,6 +6,7 @@ namespace Ring
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
+    using Models;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -30,9 +31,9 @@ namespace Ring
         public JsonSerializerSettings DeserializationSettings { get; private set; }
 
         /// <summary>
-        /// Gets the ISession.
+        /// Gets the ISessionOperations.
         /// </summary>
-        public virtual ISession Session { get; private set; }
+        public virtual ISessionOperations Session { get; private set; }
 
         /// <summary>
         /// Gets the IDevices.
@@ -128,7 +129,7 @@ namespace Ring
         /// </summary>
         private void Initialize()
         {
-            Session = new Session(this);
+            Session = new SessionOperations(this);
             Devices = new Devices(this);
             Dings = new Dings(this);
             History = new History(this);

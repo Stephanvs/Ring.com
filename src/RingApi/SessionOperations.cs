@@ -5,6 +5,8 @@
 namespace Ring
 {
     using Microsoft.Rest;
+    using Models;
+    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.IO;
@@ -14,12 +16,12 @@ namespace Ring
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Session operations.
+    /// SessionOperations operations.
     /// </summary>
-    public partial class Session : IServiceOperations<RingApi>, ISession
+    public partial class SessionOperations : IServiceOperations<RingApi>, ISessionOperations
     {
         /// <summary>
-        /// Initializes a new instance of the Session class.
+        /// Initializes a new instance of the SessionOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -27,7 +29,7 @@ namespace Ring
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public Session(RingApi client)
+        public SessionOperations(RingApi client)
         {
             if (client == null)
             {
@@ -62,10 +64,13 @@ namespace Ring
         /// <exception cref="HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse> StartWithHttpMessagesAsync(string apiVersion = default(string), string deviceos = default(string), string devicehardwareId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<Session>> StartWithHttpMessagesAsync(string apiVersion = default(string), string deviceos = default(string), string devicehardwareId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -159,9 +164,27 @@ namespace Ring
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse();
+            var _result = new HttpOperationResponse<Session>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
+            // Deserialize Response
+            if ((int)_statusCode == 201)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Session>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
             if (_shouldTrace)
             {
                 ServiceClientTracing.Exit(_invocationId, _result);
