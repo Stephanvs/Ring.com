@@ -1,3 +1,3 @@
 rm ../src/RingApi/*.cs
 
-autorest -Input ../ring.com.json -CodeGenerator CSharp -OutputDirectory ../src/RingApi -Namespace Ring
+autorest -Input ../ring.com.yaml -CodeGenerator CSharp -OutputDirectory ../src/RingApi -Namespace Ring
